@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace practicando01
+namespace Presentacion_Escritorio
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace practicando01
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Principal());
+            Application.Run(new Form1());
         }
     }
 }

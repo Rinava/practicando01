@@ -1,4 +1,4 @@
-﻿namespace practicando01
+﻿namespace Escritorio
 {
     partial class Form1
     {
