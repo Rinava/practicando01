@@ -8,8 +8,8 @@ namespace Datos
 {
     public class Adaptador
     {
-        const string nameStrConPorDefecto = "NetGenerica";
-        protected SqlConnection sqlConexion { get; set; }
+        const string nameStrConPorDefecto = "NetGenericaa";
+        protected SqlConnection SqlConexion { get; set; }
 
         protected void MiraComoTeAbroLaCon()
         {
@@ -17,19 +17,19 @@ namespace Datos
             string strCon = ConfigurationManager.ConnectionStrings[nameStrConPorDefecto].ConnectionString; 
 
             //defino mi conexion con el string que encontre de conexion
-            sqlConexion = new SqlConnection(strCon);
+            SqlConexion = new SqlConnection(strCon);
 
             //abro la conexion
-            sqlConexion.Open();
+            SqlConexion.Open();
         }
 
         protected void MiraComoTeCierroLaCon()
         {
             //en esta casa las cosas que se abren se pueden cerrar
-            sqlConexion.Close();
+            SqlConexion.Close();
 
             //guardala como nula pls pa el proximo que venga
-            sqlConexion = null;
+            SqlConexion = null;
         }
     }
 }

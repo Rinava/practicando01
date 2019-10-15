@@ -11,7 +11,8 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = NegocioAlumno.RecuperarTodos();
+            NegocioAlumno al = new NegocioAlumno();
+            GridView1.DataSource = al.RecuperarTodos();
             GridView1.DataBind(); //seguir por acá
         }
 

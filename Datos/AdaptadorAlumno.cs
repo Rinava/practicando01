@@ -22,7 +22,7 @@ namespace Datos
                 this.MiraComoTeAbroLaCon();
 
                 //definimos el tipo de comando que necesitamos 
-                SqlCommand comando = new SqlCommand("select * from Alumno ", sqlConexion);
+                SqlCommand comando = new SqlCommand("select * from Alumno", SqlConexion);
 
                 //ejecutamos el datareader sobre el comando que definimos 
                 SqlDataReader drAlumnos = comando.ExecuteReader();
@@ -34,7 +34,7 @@ namespace Datos
 
                     //relleno los atributos de 1 Alumno
                     alu.ApeNom = (string)drAlumnos["Ape_nom"];
-                    alu.FechaNac = (DateTime)drAlumnos["Fecha_Nac"];
+                    alu.FechaNac = (DateTime)drAlumnos["Fecha_nac"];
                     alu.Id = (int)drAlumnos["Id"];
                     alu.Email = (string)drAlumnos["Email"];
                     alu.NotaAvg = (decimal)drAlumnos["Nota_avg"];
@@ -46,21 +46,28 @@ namespace Datos
                 //cierro el data reader y la conexion
                 drAlumnos.Close();
                 this.MiraComoTeCierroLaCon();}
-            catch(Exception ex) { Exception ExcepcionManejada = new Exception("No se lograron recuperar los alumnos", ex);}
+            catch(Exception ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de alumnos", ex);
+                throw ExcepcionManejada;
+            }
             return Alumnos;
         }
         public EAlumno RecuperarUno(int id)
         {
             this.MiraComoTeAbroLaCon(); //abro la conexion
-            SqlCommand comando = new SqlCommand("select * from Alumno where @id=Id",sqlConexion);
+            SqlCommand comando = new SqlCommand("select * from Alumno where @id=Id",SqlConexion);
             comando.Parameters.Add("@id", SqlDbType.Int).Value = id; //using System.Data
             SqlDataReader drAlumno = comando.ExecuteReader();
             EAlumno alu = new EAlumno();
-            alu.ApeNom = (string)drAlumno["Ape_nom"];
-            alu.FechaNac = (DateTime)drAlumno["Fecha_Nac"];
-            alu.Id = (int)drAlumno["Id"];
-            alu.Email = (string)drAlumno["Email"];
-            alu.NotaAvg = (decimal)drAlumno["Nota_avg"];
+            if (drAlumno.Read())
+            {
+                alu.ApeNom = (string)drAlumno["Ape_nom"];
+                alu.FechaNac = (DateTime)drAlumno["Fecha_Nac"];
+                alu.Id = (int)drAlumno["Id"];
+                alu.Email = (string)drAlumno["Email"];
+                alu.NotaAvg = (decimal)drAlumno["Nota_avg"];
+            }
             return alu;
             
         }

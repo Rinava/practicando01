@@ -12,7 +12,7 @@ namespace Negocio
 {
     public class NegocioAlumno
     {
-        public static List<EAlumno> RecuperarTodos()
+        public  List<EAlumno> RecuperarTodos()
         {
             //debo crear una instancia de adaptador alumno 
             AdaptadorAlumno alumnos = new AdaptadorAlumno();

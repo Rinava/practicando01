@@ -72,6 +72,7 @@
             this.Controls.Add(this.comboBoxApeNom);
             this.Name = "Lista";
             this.Text = "Lista";
+            this.Load += new System.EventHandler(this.Lista_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

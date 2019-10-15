@@ -18,11 +18,14 @@ namespace practicando01
         {
             InitializeComponent();
             cargarComboBox();
+
         }
+        
 
         private void cargarComboBox()
         {
-            comboBoxApeNom.DataSource = NegocioAlumno.RecuperarTodos(); // de aca salen los datos
+            NegocioAlumno al = new NegocioAlumno();
+            comboBoxApeNom.DataSource = al.RecuperarTodos(); // de aca salen los datos
             comboBoxApeNom.DisplayMember="ApeNom"; // mostrar apellido y nombre
             comboBoxApeNom.ValueMember = "Id"; //lo muestra por id????
             comboBoxApeNom.SelectedIndex = -1; //no tiene seleccionado ninguno por default
@@ -42,6 +45,7 @@ namespace practicando01
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+
             if (comboBoxApeNom.SelectedIndex != -1)
             {
                 NegocioAlumno alu = new NegocioAlumno();
@@ -65,6 +69,11 @@ namespace practicando01
             textoAlumno += "Nota promedio:" + alumno.NotaAvg.ToString() + "\n";
             return textoAlumno;
 
+        }
+
+        private void Lista_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
