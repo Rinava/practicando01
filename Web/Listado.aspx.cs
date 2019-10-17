@@ -11,9 +11,7 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            NegocioAlumno al = new NegocioAlumno();
-            GridView1.DataSource = al.RecuperarTodos();
-            GridView1.DataBind(); //seguir por acá
+
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
